@@ -1,0 +1,20 @@
+{
+  "name": "@power/utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.21.4",
+    "babel-preset-es2015": "^6.24.1",
+    "rollup": "^3.20.2"
+  }
+}
