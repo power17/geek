@@ -1,0 +1,15 @@
+{
+  "name": "geek",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "node ./scripts/preinstall.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.2.47"
+  }
+}
