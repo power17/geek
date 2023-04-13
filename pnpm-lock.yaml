@@ -10,6 +10,21 @@ importers:
 
   packages/admin: {}
 
+  packages/babel:
+    devDependencies:
+      '@babel/generator':
+        specifier: ^7.21.4
+        version: registry.npmmirror.com/@babel/generator@7.21.4
+      '@babel/parser':
+        specifier: ^7.21.4
+        version: registry.npmmirror.com/@babel/parser@7.21.4
+      '@babel/traverse':
+        specifier: ^7.21.4
+        version: registry.npmmirror.com/@babel/traverse@7.21.4
+      '@babel/types':
+        specifier: ^7.21.4
+        version: registry.npmmirror.com/@babel/types@7.21.4
+
   packages/utils:
     dependencies:
       vue:
