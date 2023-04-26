@@ -8,6 +8,12 @@ importers:
         specifier: ^3.2.47
         version: registry.npmmirror.com/vue@3.2.47
 
+  02-前端工程化/mini-rollup/ast:
+    devDependencies:
+      acorn:
+        specifier: ^8.8.2
+        version: registry.npmmirror.com/acorn@8.8.2
+
   packages/admin: {}
 
   packages/babel:
