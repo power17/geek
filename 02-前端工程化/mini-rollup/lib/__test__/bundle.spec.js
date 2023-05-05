@@ -38,6 +38,7 @@ a()
       expect(calls[0][1]).toBe(`const a = () => 1
 a()`);
     });
+    
     test("多模块", () => {
       const bundle = new Bundle({
         entry: "index.js",
