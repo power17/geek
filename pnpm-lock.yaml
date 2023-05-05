@@ -10,9 +10,15 @@ importers:
 
   02-前端工程化/mini-rollup:
     devDependencies:
+      acorn:
+        specifier: ^8.8.2
+        version: registry.npmmirror.com/acorn@8.8.2
       jest:
         specifier: ^29.5.0
         version: registry.npmmirror.com/jest@29.5.0
+      magic-string:
+        specifier: ^0.30.0
+        version: registry.npmmirror.com/magic-string@0.30.0
 
   02-前端工程化/mini-rollup/ast:
     dependencies:
@@ -5421,7 +5427,6 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec@1.4.15
-    dev: false
 
   registry.npmmirror.com/make-dir@3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/make-dir/-/make-dir-3.1.0.tgz}

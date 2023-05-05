@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.5.0"
+    "acorn": "^8.8.2",
+    "jest": "^29.5.0",
+    "magic-string": "^0.30.0"
   }
 }
