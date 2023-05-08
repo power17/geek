@@ -2,6 +2,8 @@ const Koa = require("koa");
 const fs = require("fs");
 const path = require("node:path");
 const app = new Koa();
+const sfc = require("@vue/compiler-sfc");
+const compilerDom = require("@vue/compiler-dom");
 app.use(async (ctx) => {
   const { url, query } = ctx.request;
   // 加载 html
@@ -46,9 +48,47 @@ app.use(async (ctx) => {
     const pkgPath = prefix + "/package.json";
     const module = require(pkgPath).module;
     const m = fs.readFileSync(prefix + "/" + module, "utf-8");
-    console.log(m);
     ctx.type = "application/javascript";
     ctx.body = rewritedImport(m);
+  }
+  // 单文件sfc支持
+  // *.vue => template模板
+  if (url.match(/\.vue/)) {
+    const p = path.resolve(__dirname, "../" + url.split("?")[0].slice(1));
+    const content = fs.readFileSync(p, "utf-8");
+    const { descriptor } = sfc.parse(content);
+    // .vue文件script的处理
+    if (!query.type) {
+      ctx.type = "application/javascript";
+      ctx.body = `${rewritedImport(
+        descriptor.script.content.replace("export default", "const __script = ")
+      )}
+      import {render as __render} from "${url}?type=tempale"
+      __script.render = __render
+      export default __script
+      `;
+      // .vue的template处理
+    } else {
+      const template = descriptor.template.content;
+      const render = compilerDom.compile(template, { mode: "module" });
+      ctx.type = "application/javascript";
+      ctx.body = rewritedImport(render.code);
+    }
+  }
+  // css文件支持
+  if (url.endsWith(".css")) {
+    const p = path.resolve(__dirname, "../", url.slice(1));
+    const file = fs.readFileSync(p, "utf-8");
+    console.log(file);
+    const content = `const css = "${file.replace(/\n/g, "")}"
+    const link = document.createElement('style')
+    link.setAttribute("type", "text/css")
+    document.head.appendChild(link)
+    link.innerHTML = css
+    export default css
+    `;
+    ctx.type = "application/javascript";
+    ctx.body = content;
   }
 });
 app.listen(1024, () => {
