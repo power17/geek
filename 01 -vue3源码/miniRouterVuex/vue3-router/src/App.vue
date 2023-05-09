@@ -4,8 +4,17 @@
   <router-link to="/foo">foo</router-link>|
   <router-link to="/home">home</router-link>
   <router-view> </router-view>
+  <!-- <div @click="add">count : {{ $store.state.count }}</div> -->
+  <div @click="$store.state.count++">count : {{$store.state.count  }}</div>
+  <p>doubleCount: {{$store.getters.doubleCount }}</p>
 </template>
 <script setup>
+import {getCurrentInstance} from 'vue'
+const app = getCurrentInstance()
+// console.log(app, '$store')s
+const add = () =>{
+  app.$store.state.count++
+}
 
 </script>
 

@@ -33,6 +33,34 @@ importers:
         specifier: ^4.3.5
         version: registry.npmmirror.com/vite@4.3.5
 
+  01 -vue3源码/miniRouterVuex/vue3-router:
+    dependencies:
+      vue:
+        specifier: ^3.2.47
+        version: registry.npmmirror.com/vue@3.2.47
+      vuex:
+        specifier: ^4.1.0
+        version: registry.npmmirror.com/vuex@4.1.0(vue@3.2.47)
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.21.8
+        version: registry.npmmirror.com/@babel/core@7.21.8
+      '@babel/preset-env':
+        specifier: ^7.21.4
+        version: registry.npmmirror.com/@babel/preset-env@7.21.4(@babel/core@7.21.8)
+      '@vitejs/plugin-vue':
+        specifier: ^4.1.0
+        version: registry.npmmirror.com/@vitejs/plugin-vue@4.2.1(vite@4.3.5)(vue@3.2.47)
+      babel-jest:
+        specifier: ^29.5.0
+        version: registry.npmmirror.com/babel-jest@29.5.0(@babel/core@7.21.8)
+      jsdom:
+        specifier: ^22.0.0
+        version: registry.npmmirror.com/jsdom@22.0.0
+      vite:
+        specifier: ^4.3.5
+        version: registry.npmmirror.com/vite@4.3.5
+
   02-前端工程化/mini-vite:
     dependencies:
       koa:
@@ -2363,6 +2391,12 @@ packages:
     dependencies:
       '@vue/compiler-dom': registry.npmmirror.com/@vue/compiler-dom@3.2.47
       '@vue/shared': registry.npmmirror.com/@vue/shared@3.2.47
+
+  registry.npmmirror.com/@vue/devtools-api@6.5.0:
+    resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.5.0.tgz}
+    name: '@vue/devtools-api'
+    version: 6.5.0
+    dev: false
 
   registry.npmmirror.com/@vue/reactivity-transform@3.2.47:
     resolution: {integrity: sha512-m8lGXw8rdnPVVIdIFhf0LeQ/ixyHkH5plYuS83yop5n7ggVJU+z5v0zecwEnX7fa7HNLBhh2qngJJkxpwEEmYA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/reactivity-transform/-/reactivity-transform-3.2.47.tgz}
@@ -6508,6 +6542,18 @@ packages:
       '@vue/runtime-dom': registry.npmmirror.com/@vue/runtime-dom@3.2.47
       '@vue/server-renderer': registry.npmmirror.com/@vue/server-renderer@3.2.47(vue@3.2.47)
       '@vue/shared': registry.npmmirror.com/@vue/shared@3.2.47
+
+  registry.npmmirror.com/vuex@4.1.0(vue@3.2.47):
+    resolution: {integrity: sha512-hmV6UerDrPcgbSy9ORAtNXDr9M4wlNP4pEFKye4ujJF8oqgFFuxDCdOLS3eNoRTtq5O3hoBDh9Doj1bQMYHRbQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vuex/-/vuex-4.1.0.tgz}
+    id: registry.npmmirror.com/vuex/4.1.0
+    name: vuex
+    version: 4.1.0
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': registry.npmmirror.com/@vue/devtools-api@6.5.0
+      vue: registry.npmmirror.com/vue@3.2.47
+    dev: false
 
   registry.npmmirror.com/w3c-xmlserializer@4.0.0:
     resolution: {integrity: sha512-d+BFHzbiCx6zGfz0HyQ6Rg69w9k19nviJspaj4yNscGjrHu94sVP+aRm75yEbCh+r2/yR+7q6hux9LVtbuTGBw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/w3c-xmlserializer/-/w3c-xmlserializer-4.0.0.tgz}

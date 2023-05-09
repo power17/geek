@@ -1,5 +1,5 @@
 import { defineComponent, getCurrentInstance, h, unref } from "vue";
-import HelloWorld from "./../src/components/HelloWorld.vue";
+import HelloWorld from "../src/components/HelloWorld.vue";
 export default defineComponent({
   setup() {
     return () => {

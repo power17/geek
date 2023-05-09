@@ -1,6 +1,6 @@
 <template>
   <div>home{{ num }}</div>
-  <button @click="add">fjisffjsif</button>
+  <button @click="add" >fjisffjsif</button>
 </template>
 
 
