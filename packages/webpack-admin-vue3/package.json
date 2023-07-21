@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --progress --config ./webpack.config.js",
-    "build:report": "webpack --config ./webpack.config.js --json=stats.json",
+    "dev": "webpack serve --progress --config ./webpack.dev.config.js",
+    "build:report": "webpack --config ./webpack.prod.config.js --json=stats.json",
     "build:measure": "webpack --config ./speedmeasure.js",
-    "build": "webpack"
+    "build": "webpack  --config ./webpack.prod.config.js"
   },
   "keywords": [],
   "author": "",

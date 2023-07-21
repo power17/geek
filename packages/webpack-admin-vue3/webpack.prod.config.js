@@ -4,20 +4,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-module.exports = {
-  mode: 'development', // 环境模式
+const config = {
+  mode: 'production', // 环境模式
   entry: path.resolve(__dirname, './src/main.ts'), // 打包入口
   output: {
     path: path.resolve(__dirname, 'dist'), // 打包出口
     filename: 'js/[name].js', // 打包完的静态资源文件名
     publicPath: '/',
   },
-  devtool: 'eval-cheap-module-source-map',
-  // 性能优化
-  cache: {
-    type: 'filesystem',
-  },
-  // profile: true, // 内置性能优化配置
+
+  // profile: true, // 内置性能分析选项
   module: {
     rules: [
       { test: /\.vue$/, use: ['vue-loader'] },
@@ -39,11 +35,7 @@ module.exports = {
       { test: /\.(png|jpe?g|gif|webp)(\?.*)?$/, type: 'asset', generator: { filename: 'img/[contenthash:8][ext][query]' } },
     ],
   },
-  devServer: {
-    static: path.resolve(__dirname, './dist'),
-    port: 5555,
-    historyApiFallback: true, // 支持history 模式
-  },
+
   resolve: {
     alias: { '@': path.resolve('src') },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue', '.json'],
@@ -57,3 +49,35 @@ module.exports = {
     }),
   ],
 };
+// 性能优化
+// 文件缓存
+config.cache = {
+  type: 'filesystem',
+};
+// 约束loader范围
+config.module.rules.map((v) => {
+  v.exclude = /node_modules/;
+});
+// sourcemap
+config.optimization = {
+  minimize: true, //是否压缩
+};
+
+config.optimization = {
+  minimize: true,
+  minimizer: [
+    new TerserPlugin({
+      // test: /\.js(\?.*)?$/i,
+      // minify: TerserPlugin.terserMinify, (默认)
+      // 需安装pnpm i @swc/core esbuild -D
+      // minify: TerserPlugin.uglifyJsMinify,
+      //  minify: TerserPlugin.swcMinify,
+      // minify: TerserPlugin.esbuildMinify, terserOptions: {},
+    }),
+  ],
+};
+
+// vue已经编译过，无需再次编译
+config.module.noParse = /(^vue$)|(^pinia$)|(^vue-router$)/;
+// config.experiments = { lazyCompilation: true }; // 懒加载（开发环境游泳）
+config.module.exports = config;
