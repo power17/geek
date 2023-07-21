@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false, // 允许any
     "target": "es5", // 指定编译后的ECMAScript目标版本： 'ES3' (default),
     "module": "esnext", // 用来指定要使用的模块标准: 'none', 'commonjs', 'a
     "strict": true, // 启用所有严格类型检查选项。

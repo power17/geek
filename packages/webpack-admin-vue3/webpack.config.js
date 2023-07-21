@@ -2,6 +2,7 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   mode: 'development', // 环境模式
@@ -11,10 +12,16 @@ module.exports = {
     filename: 'js/[name].js', // 打包完的静态资源文件名
     publicPath: '/',
   },
+  devtool: 'eval-cheap-module-source-map',
+  // 性能优化
+  cache: {
+    type: 'filesystem',
+  },
+  // profile: true, // 内置性能优化配置
   module: {
     rules: [
       { test: /\.vue$/, use: ['vue-loader'] },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.css$/, use: ['style-loader', 'css-loader', 'postcss-loader'] },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
@@ -24,22 +31,25 @@ module.exports = {
             options: {
               // transpileOnly: true, // 关闭项目运行时的类型检查
               appendTsSuffixTo: ['\\.vue$'], // 给 .vue文件添加个
-              // happyPackMode: true,
+              // happyPackMode: true, // 并行处理（效果不理想）
             },
           },
         ],
       },
+      { test: /\.(png|jpe?g|gif|webp)(\?.*)?$/, type: 'asset', generator: { filename: 'img/[contenthash:8][ext][query]' } },
     ],
   },
   devServer: {
     static: path.resolve(__dirname, './dist'),
     port: 5555,
+    historyApiFallback: true, // 支持history 模式
   },
   resolve: {
     alias: { '@': path.resolve('src') },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue', '.json'],
   },
   plugins: [
+    autoprefixer,
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({

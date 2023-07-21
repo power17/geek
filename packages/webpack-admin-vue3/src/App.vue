@@ -1,14 +1,11 @@
 <template lang="">
-  <div>
-    <h1>{{ msg }}</h1>
-    <!-- <h2>{{ str }}</h2> -->
-  </div>
+  <router-view></router-view>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useUserStore } from './store/user';
+const user = useUserStore();
 
-// import { Ref, ref } from 'vue';
-// const msg: Ref<number> = ref(1);
 const msg = ref('jfidfj');
 </script>
 <style scoped>
