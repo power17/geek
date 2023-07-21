@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'), // 打包出口
     filename: 'js/[name].js', // 打包完的静态资源文件名
-    publicPath: './',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -33,7 +33,7 @@ module.exports = {
   },
   devServer: {
     static: path.resolve(__dirname, './dist'),
-    port: 3333,
+    port: 5555,
   },
   resolve: {
     alias: { '@': path.resolve('src') },
@@ -43,7 +43,7 @@ module.exports = {
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      templateContent: ` <!DOCTYPE html> <html> <head> <meta charset="utf-8"> <title>Webpack App</title> </head> <body> <div id="app" /> hello world</body> </html> `,
+      templateContent: ` <!DOCTYPE html> <html> <head> <meta charset="utf-8"> <title>Webpack App</title> </head> <body> <div id="app" /> helloworld</body> </html> `,
     }),
   ],
 };
