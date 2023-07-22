@@ -1,8 +1,10 @@
 const path = require('path');
+const fs = require('fs');
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const shell = fs.readFileSync('./public/shell.html');
 
 const config = {
   mode: 'development', // 环境模式
@@ -49,15 +51,16 @@ const config = {
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      templateContent: ` <!DOCTYPE html> <html> <head> <meta charset="utf-8"> <title>Webpack App</title> </head> <body> <div id="app" /> helloworld</body> </html> `,
+      template: './public/index.ejs',
+      templateParameters: { shell },
     }),
   ],
 };
 // 性能优化
 // 文件缓存
-// config.cache = {
-//   type: 'filesystem',
-// };
+config.cache = {
+  type: 'filesystem',
+};
 // 约束loader范围
 config.module.rules.map((v) => {
   v.exclude = /node_modules/;
