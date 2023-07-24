@@ -18,7 +18,8 @@
     ],
     "rules": {
         "react/prop-types": "off",
-        // "no-unused-vars": "off",
-        "react/no-unknown-property": ["error", { "ignore": ["css"] }]
+        "no-unused-vars": "off",
+        "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+        "no-debugger": "off"
     }
 }
