@@ -79,6 +79,7 @@ export default function KanbanBoard({ isLoading, todoList, ongoingList, doneList
               setDragTarget(isTgt ? COLUMN_KEY_DONE : null);
             }}
             bgColor={COLUMN_BG_COLORS.done}
+            onRemove={onRemove.bind(null, COLUMN_KEY_DONE)}
             title="已完成"></KanbanColumn>
         </>
       )}

@@ -43,6 +43,7 @@ export const KanbanColumn = ({
   setIsDragTarget = () => {},
   setDragItem,
   onDrop,
+  onRemove,
 }) => {
   const [showAdd, setShowAdd] = useState(false);
   const handleAdd = () => {
@@ -95,6 +96,7 @@ export const KanbanColumn = ({
         {canAddNew && showAdd && <KanbanNewCard onsubmit={handleSubmit}></KanbanNewCard>}
         {cartList.map((props, index) => (
           <KanbanCard
+            onRemove={onRemove}
             onDragStart={() => {
               setDragItem && setDragItem(props);
             }}
